@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simple Cat Image Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #catImage {
+      width: 500px;
+      height: 400px;
+      display: block;
+      margin: auto;
+    }
+
+    #nextButton {
+      width: 150px;
+      height: 50px;
+      margin: 20px auto;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #catFact {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Random Cat Image Viewer</h1>
+
+  <img id="catImage" src="" alt="Random Cat Image" />
+
+  <button id="nextButton">Next</button>
+
+  <p id="catFact"></p>
+
+  <script>
+    // Cat image and fact data
+    const catData = {
+      images: [
+        "https://images.unsplash.com/photo-1506320485634-aae4322c7cc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "https://images.unsplash.com/photo-1491543764398-4e542a099f84?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=881&q=80",
+        "https://images.unsplash.com/photo-1590360445742-c44c624b1290?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "https://images.unsplash.com/photo-1506320485634-aae4322c7cc4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+      ],
+      facts: [
+        "Cats can purr at a frequency of up to 25 Hertz, which is thought to have healing properties.",
+        "The average lifespan of a cat is 13-17 years, but some cats have been known to live over 30 years.",
+        "Cats have 32 muscles in each ear, which allows them to rotate their ears 180 degrees.",
+        "A group of cats is called a clowder.",
+        "Cats have a third eyelid called a nictitating membrane, which helps protect their eyes from dust and debris.",
+        "The world's oldest cat lived to be 38 years old.",
+        "Cats can jump up to six times their height.",
+        "Cats have over 100 vocalizations, while dogs only have around 10.",
+        "The first cat in space was a French cat named Astrocat, who was launched into space in 1963.",
+        "Cats are natural predators and kill an estimated 2.4 billion birds and 12.3 billion mammals in the United States each year."
+      ]
+    };
+
+    // Element references
+    const catImage = document.getElementById("catImage");
+    const nextButton = document.getElementById("nextButton");
+    const catFact = document.getElementById("catFact");
+
+    // Function to get a random cat image from the array
+    function getRandomCatImage() {
+      const randomIndex = Math.floor(Math.random() * catData.images.length);
+      const imageUrl = catData.images[randomIndex];
+      return imageUrl;
+    }
+
+    // Function to get a random cat fact from the array
+    function getRandomCatFact() {
+      const randomIndex = Math.floor(Math.random() * catData.facts.length);
+      const fact = catData.facts[randomIndex];
+      return fact;
+    }
+
+    // Function to display a random cat image and fact
+    function displayCatContent() {
+      const imageUrl = getRandomCatImage();
+      const fact = getRandomCatFact();
+      catImage.src = imageUrl;
+      catFact.innerText = fact;
+    }
+
+    // Initial display
+    displayCatContent();
+
+    // Event listener for the Next button click
+    nextButton.addEventListener("click", displayCatContent);
+  </script>
+</body>
+
+</html>
